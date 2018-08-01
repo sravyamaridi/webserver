@@ -1,0 +1,14 @@
+- name: html page for debian
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+  when: ansible_os_family == "Debian"
+  notify:
+  - restart apache2
+- name: html page for RedHat
+  copy: 
+    src: index.html
+    dest: /var/www/html/index.html
+  notify: 
+  - restart httpd
+  when: ansible_os_family == "RedHat"

@@ -1,0 +1,11 @@
+---
+# handlers file for webserver
+- name: restart apache2
+  service:
+    name: "{{ apt_package }}"
+    state: restarted
+- name: restart httpd
+  service:
+    name: "{{ yum_package }}"
+    state: restarted
+   

@@ -1,0 +1,14 @@
+- name: change port number for Debian
+  template:
+    src: ports.conf.j2 
+    dest: /etc/apache2/ports.conf
+  notify:
+  - restart apache2
+  when: ansible_os_family == "Debian"
+- name: change port number for redhat
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+  notify:
+  - restart httpd
+  when: ansible_os_family == "RedHat"

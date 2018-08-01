@@ -1,0 +1,15 @@
+---
+# tasks file for webserver
+- name: update redhat family boxes
+  yum:
+    name: '*'
+    update_cache: yes
+    state: present
+  when: ansible_os_family == "RedHat"
+- name: update debian modules
+  apt: 
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+- import_tasks: install.yml
+- import_tasks: configure.yml
+- import_tasks: portno.yml

@@ -1,0 +1,13 @@
+- name: install apache2 on debian
+  apt:
+    name: "{{ apt_package }}"
+    state: present
+  when: ansible_os_family == "Debian"
+- name: install httpd on redhat
+  yum:
+    name: "{{ yum_package }}"
+    state: present
+  notify:
+  - restart httpd
+  when: ansible_os_family == "RedHat"
+
